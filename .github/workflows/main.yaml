@@ -21,7 +21,11 @@ jobs:
         with:
           username: ${{secrets.DOCKERHUB_USERNAME}}
           password: ${{secrets.DOCKERHUB_PASSWORD}}
-      - name: Push the image to Docker Hub
+      - name: Push the python image to Docker Hub
         run: |
           docker build -t ${{secrets.DOCKERHUB_KEY}}/pythonimg:latest ./py
           docker push ${{secrets.DOCKERHUB_KEY}}/pythonimg:latest
+      - name: Push the html image to Docker Hub
+        run: |
+          docker build -t ${{secrets.DOCKERHUB_KEY}}/htmlimg:latest ./web
+          docker push ${{secrets.DOCKERHUB_KEY}}/htmlimg:latest 
