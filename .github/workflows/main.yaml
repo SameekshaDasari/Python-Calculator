@@ -23,5 +23,5 @@ jobs:
           password: ${{secrets.DOCKERHUB_PASSWORD}}
       - name: Push the image to Docker Hub
         run: |
-          docker build -t ${{secrets.DOCKERHUB_KEY}}/pythonimg:latest .
+          docker build -t ${{secrets.DOCKERHUB_KEY}}/pythonimg:latest ./py
           docker push ${{secrets.DOCKERHUB_KEY}}/pythonimg:latest
