@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: "3.10"
       - name: Runs Tests
-        run: python test_calc.py
+        run: python py/test_calc.py
       - name: Docker Hub login
         uses: docker/login-action@v2
         with:

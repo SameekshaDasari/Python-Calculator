@@ -8,5 +8,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["python","py/test_calc.py"]
+CMD ["python","test_calc.py"]
 
