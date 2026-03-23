@@ -1,6 +1,12 @@
 name: Python CI/CD Pipeline
 
 on:
+  workflow_dispatch:
+    inputs:
+      service:
+        description: "Select which image to build"
+        required: true
+        default: "python"
   push:
     branches: ["main"]
 
@@ -22,10 +28,12 @@ jobs:
           username: ${{secrets.DOCKERHUB_USERNAME}}
           password: ${{secrets.DOCKERHUB_PASSWORD}}
       - name: Push the python image to Docker Hub
+        if: github.event.inputs.service=="python"
         run: |
           docker build -t ${{secrets.DOCKERHUB_KEY}}/pythonimg:latest ./py
           docker push ${{secrets.DOCKERHUB_KEY}}/pythonimg:latest
       - name: Push the html image to Docker Hub
+        if: github.event.inputs.service=="web"
         run: |
           docker build -t ${{secrets.DOCKERHUB_KEY}}/htmlimg:latest ./web
           docker push ${{secrets.DOCKERHUB_KEY}}/htmlimg:latest 
