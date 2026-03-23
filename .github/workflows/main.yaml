@@ -7,8 +7,6 @@ on:
         description: "Select which image to build"
         required: true
         default: "python"
-  push:
-    branches: ["main"]
 
 jobs:
   build:
